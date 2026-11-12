@@ -1,0 +1,16 @@
+
+name: Sync Upstream
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch: # 额外加这个：你可以手动点按钮触发同步，方便调试
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Sync fork from upstream
+        uses: tgymnich/fork-sync@v1
+        with:
+          upstream: storytold/wordcraft
+          target: main
